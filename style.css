@@ -69,3 +69,269 @@ body.hide-header .header {
     font-size: 2.4rem;
     color: var(--subheading-color);
 }
+
+.suggestion-list {
+    margin-top: 9.5vh;
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.suggestion-list .suggestion {
+    padding: 1.25rem;
+    cursor: pointer;
+    width: 227px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-radius: 0.75rem;
+    background: var(--secondary-color);
+}
+
+.suggestion-list .suggestion:hover {
+    background: var(--secondary-hover-color);
+}
+
+.suggestion-list .suggestion .text {
+    font-weight: 400;
+}
+
+.suggestion-list .suggestion .icon {
+    height: 42px;
+    width: 42px;
+    font-size: 1.3rem;
+    margin-top: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+.chat-list {
+    padding: 2rem 1rem 12rem;
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-color: #999 transparent;
+}
+
+.chat-list .message {
+    margin-top: 1.5rem;
+}
+
+.chat-list .message .message-content {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    align-items: center;
+}
+
+.chat-list .message .avathar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    align-self: self-start;
+}
+
+.chat-list .message.loading .avathar {
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.chat-list .message .text {
+    color : var(--text-color);
+}
+
+.chat-list .message .text.error {
+    color : #e55865;
+}
+
+.chat-list .message.loading .text {
+    display: none;
+}
+
+.chat-list .message .icon {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    cursor: pointer;
+    font-size: 1.25rem;
+    margin-left: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color : var(--text-color);
+    background: var(--secondary-color);
+    visibility: hidden;
+}
+
+.chat-list .message.loading .icon {
+    visibility: hidden;
+}
+
+.chat-list .message:not(.loading):hover .icon:not(.hide) {
+    visibility: visible;
+}
+
+.chat-list .message .icon:hover {
+    background: var(--secondary-hover-color);
+}
+
+.chat-list .loading-indicator {
+    display: none;
+    width: 100%;
+    gap: 0.8rem;
+    flex-direction: column;
+}
+
+.chat-list .message.loading .loading-indicator {
+    display: flex;
+}
+
+.chat-list .loading-indicator .loading-bar {
+    height: 11px;
+    width: 100%;
+    border-radius: 0.14rem;
+    background: linear-gradient(to right, #4285f4, var(--primary-color), #4285f4);
+    animation: animate 3s linear infinite;
+}
+
+.chat-list .loading-indicator .loading-bar:last-child {
+    width: 70%;
+}
+
+@keyframes animate {
+    0% {
+        background-position: -800px 0;
+    }
+    100% {
+        background-position: 800px 0;
+    }
+}
+
+.typing-area {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 1rem;
+    background: var(--primary-color);
+}
+
+.typing-area :where(.typing-form, .action-buttons) {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.typing-area .input-wrapper {
+    height: 56px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.typing-area .typing-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--text-color);
+    border-radius: 6.2rem;
+    padding: 1.1rem 4rem 1.1rem 1.5rem;
+    background: var(--secondary-color);
+}
+
+.typing-area .typing-input:focus {
+    background: var(--secondary-hover-color);
+}
+
+.typing-area .typing-input::placeholder {
+    color: var(--placeholder-color);
+}
+
+.typing-area .icon {
+    height: 56px;
+    width: 56px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--secondary-color);
+}
+
+.typing-area .icon:hover {
+    background-color: var(--secondary-hover-color)!important;
+}
+
+.typing-area .input-wrapper .icon {
+    position: absolute;
+    right: 0;
+    outline: none;
+    border: none;
+    background-color: none;
+    color: var(--text-color);
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.typing-area .input-wrapper .typing-input:valid ~ .icon {
+    transform: scale(1);
+}
+
+.typing-area .disclaimer-text {
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--placeholder-color);
+}
+
+
+/* Responsive medis quarey code for small screen */
+@media (max-width: 768px) {
+    .header :is(.title, .subtitle) {
+        font-size: 2rem;
+        line-height: 2.6rem;
+    }
+
+    .header .subtitle {
+        font-size: 1.7rem;
+    }
+
+    .chat-list .message .avathar {
+        width: 37px;
+        height: 37px;
+    }
+
+    .typing-area :where(.typing-form, .action-button) {
+        gap: 0.4rem
+    }
+
+    .typing-form .input-wrapper {
+        height: 50px;
+    }
+
+    .typing-form .typing-input {
+        padding: 1.1rem 3.5rem 1.1rem 1.2rem;
+    }
+
+    .typing-area .icon {
+        height: 50px;
+        width: 50px;
+    }
+
+    .typing-area .disclaimer-text {
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+    }
+}
