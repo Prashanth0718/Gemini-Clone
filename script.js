@@ -111,6 +111,14 @@ const showLoadingAnimation = ()=>{
     
 }
 
+//copy
+const copyMessage = (copyIcon) => {
+    const messageText = copyIcon.parentElement.querySelector(".text").innerText;// text = incoming message <p> class
+    navigator.clipboard.writeText(messageText);
+    copyIcon.innerText = "done"; //show tick icon
+    setTimeout(()=> copyIcon.innerText = "content_copy", 1000); //Reverting icon after 1 second
+}
+
 //Handle sending outgoing chat messages
 const handleOutgoingChat = ()=>{
     userMessage = typingForm.querySelector(".typing-input").value.trim() || userMessage;//get the input value and remove extra spaces
