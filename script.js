@@ -119,6 +119,12 @@ const suggestions = document.querySelectorAll(".suggestion-list .suggestion");
     setTimeout(showLoadingAnimation,500); // showing loading animation after a delay
 }
 
+//toggle between dark theme and light theme
+toggleThemeButton.addEventListener("click",()=>{
+    const isLightMode = document.body.classList.toggle("light_mode");
+    localStorage.setItem("themeColor", isLightMode ? "light_mode" : "dark_mode" );//Saving selected theme on browser local storage by themeColor name
+    toggleThemeButton.innerText = isLightMode ? "dark_mode" : "light_mode";//showing button if (it is light mode show dark mode) else if (it is dark mode show light mode)
+})
 
 //preventing default form submission and handle outgoing chat
 typingForm.addEventListener("submit",(e)=>{
