@@ -10,6 +10,22 @@ let isResponseGenerating = false;
 const API_KEY = "AIzaSyBzGH0mJIGEVOWGRJYlcyCJz0fJrR0DXf4";
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
 
+const loadLoacalstorageData = ()=> {
+    const savedChats = localStorage.getItem("savedChats");
+    //getting local storage themeColor value
+    const isLightMode = (localStorage.getItem("themeColor") === "light_mode");
+
+    //Apply Stored theme
+    document.body.classList.toggle("light_mode",isLightMode);
+    toggleThemeButton.innerText = isLightMode ? "dark_mode" : "light_mode";
+
+    // Restore saved Chats
+    chatList.innerHTML = savedChats || "";
+    document.body.classList.toggle("hide-header", savedChats);
+    chatList.scrollTo(0, chatList.scrollHeight); // Scroll to bottom
+}
+loadLoacalstorageData();
+
 //creating a new message element and return it (div inside div) 
 const createMessageElement = (content,...className)=>{
     const div = document.createElement("div");
