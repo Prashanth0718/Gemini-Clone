@@ -150,6 +150,14 @@ toggleThemeButton.addEventListener("click",()=>{
     toggleThemeButton.innerText = isLightMode ? "dark_mode" : "light_mode";//showing button if (it is light mode show dark mode) else if (it is dark mode show light mode)
 })
 
+//Delete all chats from local storage when button is clicked
+deleteChatButton.addEventListener("click", (e)=>{
+    if(confirm("Are you sure you want to delete all messages?")) {
+        localStorage.removeItem("savedChats");
+        loadLoacalstorageData();
+    }
+})
+
 //preventing default form submission and handle outgoing chat
 typingForm.addEventListener("submit",(e)=>{
     e.preventDefault();
