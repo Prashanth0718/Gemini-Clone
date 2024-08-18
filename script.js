@@ -18,7 +18,41 @@ const createMessageElement = (content,...className)=>{
     return div;
 }
 
+//Fetch response from the API based on user message
+const generateAPIResponse = async(incomingMessageDiv)=>{
+    const textElement = incomingMessageDiv.querySelector(".text"); // get text element
+    //Send a POST request to API with user's message
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                contents: [{
+                    role: "user",
+                    parts: [{ text: userMessage }]
+                }]
+            })
+        });
 
+        const data = await response.json();
+        if(!response.ok) throw new Error(data.error.message);
+        
+        //get the API response text and Remove asterisks from the response
+        const apiResponse = data?.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1');
+        //textElement.innerHTML = apiResponse;
+        showTypingEffect(apiResponse,textElement,incomingMessageDiv)
+    } catch (error) {
+        isResponseGenerating = false; // setting isResponseGenerating to false once the response is typed or an error occurs
+        textElement.innerText = error.message;
+        textElement.classList.add("error");
+    } finally {
+        incomingMessageDiv.classList.remove("loading");
+
+    }
+}
+
+
+//showing a loading animation while waiting for the API response 
 const showLoadingAnimation = ()=>{
 
     const html = `<div class="message-content">
