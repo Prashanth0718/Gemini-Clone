@@ -10,6 +10,13 @@ let isResponseGenerating = false;
 const API_KEY = "AIzaSyBzGH0mJIGEVOWGRJYlcyCJz0fJrR0DXf4";
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
 
+//creating a new message element and return it (div inside div) 
+const createMessageElement = (content,...className)=>{
+    const div = document.createElement("div");
+    div.classList.add("message", ...className);//to accept any number of additional class names and spread them into the classList.add method
+    div.innerHTML = content;
+    return div;
+}
 
 //Handle sending outgoing chat messages
 const handleOutgoingChat = ()=>{
