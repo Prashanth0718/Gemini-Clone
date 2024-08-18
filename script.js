@@ -18,6 +18,30 @@ const createMessageElement = (content,...className)=>{
     return div;
 }
 
+
+const showLoadingAnimation = ()=>{
+
+    const html = `<div class="message-content">
+                    <img src="gemini.svg" alt="Gemini Image" class="avathar">
+                    <p class="text"></p>
+                    <div class="loading-indicator">
+                        <div class="loading-bar"></div>
+                        <div class="loading-bar"></div>
+                        <div class="loading-bar"></div>
+                    </div>
+                    </div>
+                    <span onclick="copyMessage(this)" class="icon material-symbols-rounded">content_copy</span>`
+    
+                  
+    const incomingMessageDiv = createMessageElement(html, "incoming","loading");
+    chatList.appendChild(incomingMessageDiv);
+
+    chatList.scrollTo(0, chatList.scrollHeight); // Scroll to bottom
+
+    generateAPIResponse(incomingMessageDiv);
+    
+}
+
 //Handle sending outgoing chat messages
 const handleOutgoingChat = ()=>{
     userMessage = typingForm.querySelector(".typing-input").value.trim() || userMessage;//get the input value and remove extra spaces
