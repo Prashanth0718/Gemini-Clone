@@ -10,6 +10,7 @@ let isResponseGenerating = false;
 const API_KEY = "AIzaSyBzGH0mJIGEVOWGRJYlcyCJz0fJrR0DXf4";
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
 
+
 const loadLoacalstorageData = ()=> {
     const savedChats = localStorage.getItem("savedChats");
     //getting local storage themeColor value
@@ -52,7 +53,6 @@ const showTypingEffect = (text, textElement,incomingMessageDiv)=>{
         chatList.scrollTo(0, chatList.scrollHeight); // Scroll to bottom
     }, 75)
 }
-
 
 //Fetch response from the API based on user message
 const generateAPIResponse = async(incomingMessageDiv)=>{
@@ -111,7 +111,7 @@ const showLoadingAnimation = ()=>{
     
 }
 
-//copy
+//coping icon
 const copyMessage = (copyIcon) => {
     const messageText = copyIcon.parentElement.querySelector(".text").innerText;// text = incoming message <p> class
     navigator.clipboard.writeText(messageText);
@@ -143,6 +143,14 @@ const suggestions = document.querySelectorAll(".suggestion-list .suggestion");
     setTimeout(showLoadingAnimation,500); // showing loading animation after a delay
 }
 
+//Set userMeassage are handle outgoing chat when a suggestion is clicked
+suggestions.forEach(suggestion => {
+    suggestion.addEventListener("click", ()=>{
+        userMessage = suggestion.querySelector(".text").innerText; //getting the text element of the element of the clicked suggestion and passing it's content as userMessage
+        handleOutgoingChat();
+    })
+})
+
 //toggle between dark theme and light theme
 toggleThemeButton.addEventListener("click",()=>{
     const isLightMode = document.body.classList.toggle("light_mode");
@@ -165,8 +173,3 @@ typingForm.addEventListener("submit",(e)=>{
     handleOutgoingChat();
     
 })
-
-
-
-
-
