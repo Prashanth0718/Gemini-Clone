@@ -52,6 +52,25 @@ const generateAPIResponse = async(incomingMessageDiv)=>{
 }
 
 
+const showTypingEffect = (text, textElement,incomingMessageDiv)=>{
+    const words = text.split(' ');
+    let currentWordIndex = 0;
+
+    const typingInterval = setInterval(()=>{
+        // Append each word to the text element with a space
+        textElement.innerText += (currentWordIndex===0 ? '' : ' ') + words[currentWordIndex++];
+        incomingMessageDiv.querySelector(".icon").classList.add("hide");
+
+        if(currentWordIndex === words.length) {
+            clearInterval(typingInterval)
+            isResponseGenerating = false;      
+            incomingMessageDiv.querySelector(".icon").classList.remove("hide"); //hiding copy icon while response is being typed 
+            localStorage.setItem("savedChats", chatList.innerHTML); // Save Chats to local Storage
+        }
+        chatList.scrollTo(0, chatList.scrollHeight); // Scroll to bottom
+    }, 75)
+}
+
 //showing a loading animation while waiting for the API response 
 const showLoadingAnimation = ()=>{
 
