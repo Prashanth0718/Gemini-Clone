@@ -34,14 +34,17 @@ Gemini Clone is a real-time chat application with interactive typing effects, th
 ## Screenshots
 Include a few screenshots of your project to give others a quick preview of its look and feel.
 
-![Screenshot 1](path-to-screenshot-1.png)
-*Screenshot 1*
+![Dark Mode Screenshot](assets/InterfaceScreenshot.png)
+*Dark mode of the Gemini Clone showing the chat interface*
 
-![Screenshot 2](path-to-screenshot-2.png)
-*Screenshot 2*
+![Loading Animation Screenshot](assets/LoadingScreenshot.png)
+*Loading animation while waiting for the API response*
 
-![Screenshot 3](path-to-screenshot-3.png)
-*Screenshot 3*
+![Response Given Screenshot](assets/ResponseScreenshot.png)
+*Chatbot response displayed in the Gemini Clone interface*
+
+![Delete Button Screenshot](assets/DeleteScreenshot.png)
+*Delete button allowing users to clear chat history with a single click*
 
 ## Deployment
 The project is deployed on Netlify. Check out the live demo here: [Gemini Clone](https://prashanth-s-n-gemini-clone.netlify.app/).
