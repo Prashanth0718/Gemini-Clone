@@ -17,7 +17,8 @@
         <!-- Suggestion List -->
         <ul class="suggestion-list">
             <li class="suggestion">
-                <h4 class="text">Help me plan a game night with my 5 best friends for under $100.</h4>
+                <h4 class="text">Help me plan a game night with my 5 best friends 
+                for under $100.</h4>
                 <span class="icon material-symbols-rounded">draw</span>
             </li>
             <li class="suggestion">
@@ -25,38 +26,37 @@
                 <span class="icon material-symbols-rounded">lightbulb</span>
             </li>
             <li class="suggestion">
-                <h4 class="text">Can you help me find the latest news on web development?</h4>
+                <h4 class="text">Can you help me find latest news on web development?</h4>
                 <span class="icon material-symbols-rounded">explore</span>
             </li>
             <li class="suggestion">
-                <h4 class="text">Write a JavaScript code to sum all elements in an array.</h4>
+                <h4 class="text">Write a javascript code to sum all elements in an array.</h4>
                 <span class="icon material-symbols-rounded">code</span>
             </li>
         </ul>
     </header>
     
-    <!-- Chat List / Container -->
-    <div class="chat-list"></div>
-
-    <!-- Typing Area -->
-    <div class="typing-area">
-        <form action="#" class="typing-form">
-            <div class="input-wrapper">
-                <input class="typing-input" type="text" placeholder="Enter a prompt here" required>
-                <button type="submit" class="icon material-symbols-rounded">send</button>
-            </div>
-            <div class="action-buttons">
-                <button type="button" id="toggle-theme-button" class="icon material-symbols-rounded">light_mode</button>
-                <button type="button" id="voice-input-button" class="icon material-symbols-rounded">mic</button>
-                <button type="button" id="delete-chat-button" class="icon material-symbols-rounded">delete</button>
-                <button type="button" id="stop-speaking-button" class="icon material-symbols-rounded">stop</button>
-            </div>
-        </form>
-        <p class="disclaimer-text">
-            Gemini may display inaccurate info, including about people, so double-check its responses.
-        </p>
+    <!-- Chat List / Cointainer -->
+    <div class="chat-list">
+        
     </div>
 
+        <!-- Typing Area -->
+         <div class="typing-area">
+            <form action="#" class="typing-form">
+                <div class="input-wrapper">
+                    <input class="typing-input" type="text" placeholder="Enter a prompt here" required>
+                    <button class="icon material-symbols-rounded">send</button>
+                </div>
+                <div class="action-buttons">
+                    <span id="toggle-theme-button" class="icon material-symbols-rounded">light_mode</span>
+                    <span id="delete-chat-button" class="icon material-symbols-rounded">delete</span>
+                </div>
+            </form>
+            <p class="disclaimer-text">
+                Gemini may display inaccurate info, including about people, so double-check its responses.
+            </p>
+         </div>
     <script src="script.js"></script>
 </body>
 </html>
