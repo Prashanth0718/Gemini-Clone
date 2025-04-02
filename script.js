@@ -10,7 +10,7 @@ let isResponseGenerating = false;
 //AIzaSyBzGH0mJIGEVOWGRJYlcyCJz0fJrR0DXf4
 //AIzaSyCP6Wqvj-RHqPeX969dstPUUtxkRo-GejU
 const API_KEY = "AIzaSyDeuCq6_tOVa5XYtve8IGyF4TJfmZp8dv4";
-const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 
 const loadLoacalstorageData = ()=> {
