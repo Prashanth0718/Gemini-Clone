@@ -1,0 +1,11 @@
+# Node.js
+node_modules/
+
+# dotenv environment variables
+.env
+
+# Logs
+*.log
+
+# npm package-lock
+package-lock.json
